@@ -151,6 +151,12 @@ public struct StationService: NetworkService {
     }
     
     
+    /// This method returns a Result object which contains the array of results
+    /// - Parameters:
+    ///   - stationId: the Node Id of the station
+    ///   - startTime: Lower limit of the time table. Leave blank to have current time.
+    ///   - endTime: Upper limit of the time table. Leave blank to default to end of day
+    ///   - completion: return a Result which if successfull contains a StationReply object with a list of departures and arrivals.
     public func getTimeTable(forStationId stationId: Int, startTime: Date = Date(), endTime: Date? = nil, completion: @escaping( Result<StationReply, NetworkError>) -> ()) {
         
         let endTime = endTime ?? Date.endOfDay
@@ -175,6 +181,30 @@ public struct StationService: NetworkService {
                 case .failure(let error):
                     completion(.failure(error))
             }
+        }
+    }
+    
+    /// This method returns asynchronously a Result object which contains the array of results
+    /// - Parameters:
+    ///   - stationId: the Node Id of the station
+    ///   - startTime: Lower limit of the time table. Leave blank to have current time.
+    ///   - endTime: Upper limit of the time table. Leave blank to default to end of day
+    /// - Returns: Result which if successfull contains a StationReply object with a list of departures and arrivals.
+    public func getTimeTable(forStationId stationId: Int, startTime: Date = Date(), endTime: Date? = nil) async throws -> StationReply {
+        
+        let endTime = endTime ?? Date.endOfDay
+        let url = "\(stationDetails)\(stationId)/\(startTime.ipFormated)/\(endTime.ipFormated)"
+        let result = try await getRequest(from: url)
+        do {
+            
+            let decoder = JSONDecoder()
+            let reply = try decoder.decode(StationReply.self, from: result)
+            return reply
+        }
+        catch let error {
+            
+            print(error.localizedDescription)
+            throw GeneralError.unknown(error)
         }
     }
 }
