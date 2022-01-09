@@ -96,7 +96,7 @@ This object has the following properties:
 
 # Planned Development
 
-- [ ] Implement getTimeTable asynchronously;
+- [x] Implement getTimeTable asynchronously;
 - [ ] Implement TimeTableElement.serviceType as an Enum;
 - [ ] Implement TimeTableElement.observations as an Enum;
 - [ ] Add search by train id;
