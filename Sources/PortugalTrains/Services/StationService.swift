@@ -17,7 +17,7 @@ public struct StationService: NetworkService {
     }
     
     
-    public struct Node: Codable {
+    public struct Node: Codable, Hashable {
         public let distance: Int?
         public let id: Int?
         public let name: String?
@@ -26,6 +26,12 @@ public struct StationService: NetworkService {
             case distance = "Distancia"
             case id = "NodeID"
             case name = "Nome"
+        }
+        
+        public func hash(into hasher: inout Hasher) {
+            hasher.combine(id)
+            hasher.combine(distance)
+            hasher.combine(name)
         }
     }
     
@@ -97,7 +103,7 @@ public struct StationService: NetworkService {
             completion(.failure(.unknown(GeneralError.invalidParameter("Can't make request with empty query"))))
             return
         }
-        let url = "\(stationSearch)\(query)"
+        let url = "\(stationSearch)\(query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? query)"
         getRequest(from: url) { result in
             
             switch result {
@@ -129,7 +135,7 @@ public struct StationService: NetworkService {
     public func search(for query: String) async throws -> StationQueryReply {
         
         guard !query.isEmpty else { throw GeneralError.invalidParameter(query) }
-        let url = "\(stationSearch)\(query)"
+        let url = "\(stationSearch)\(query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? query)"
         let result = try await getRequest(from: url)
         do {
             
