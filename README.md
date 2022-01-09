@@ -9,7 +9,7 @@ This library was made to be used in the iOS App [redE](https://apps.apple.com/us
 
 The IP API allows to search for train stations time tables, and specific trains time tables. The IP website also allows a user to see the train station details, but that functionality doesn't have an open API, which must be accessed through [other means](https://dados.gov.pt/en/datasets/estacoes-e-apeadeiros-dos-caminhos-de-ferro-portugueses/).
 
-It does however, allow the search for all the train stations in Portugal, which provide a Name and Node ID. This Node ID can then be used to return the time tables for each train station.
+The API allows the search for all the train stations in Portugal, but it provides only the Name and Node ID. This Node ID can then be used to return the time tables for each train station.
 
 # Installation
 
@@ -77,6 +77,7 @@ This object has the following properties:
 
 ### TimeTableElement Object
 
+This object has the following properties:
 + hasPassed: Boolean indicating if the train has passed the station;
 + time: The time which is expected the train to arrive/leave the station;
 + timeToOrder: A value used to order the list;
