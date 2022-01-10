@@ -83,11 +83,11 @@ This object has the following properties:
 + timeToOrder: A value used to order the list;
 + timeToOrder2: A value used to order the listl;
 + destinyStationId: The nodeID of the train's final destination;
-+ origineStationId: The nodeID of the train's original departure;
++ originStationId: The nodeID of the train's original departure;
 + trainId: The tain ID;
 + trainId2: Another train ID;
 + destinyStationName: The name of the station of the train's final destination;
-+ origineStationName: The name of the station of the train's orifinal departure;
++ originStationName: The name of the station of the train's orifinal departure;
 + observations: Some info regarding the train;
 + company: The company operating the train;
 + serviceType: The service type of the train;

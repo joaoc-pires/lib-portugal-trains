@@ -27,11 +27,11 @@ public struct StationTimeTableElement: Codable, Equatable {
     public let timeToOrder: String?
     public let timeToOrder2: String?
     public let destinyStationId: Int?
-    public let origineStationId: Int?
+    public let originStationId: Int?
     public let trainId: Int?
     public let trainId2: Int?
     public let destinyStationName: String?
-    public let origineStationName: String?
+    public let originStationName: String?
     public let observations: String?
     public let company: String?
     public let serviceType: String?
@@ -42,11 +42,11 @@ public struct StationTimeTableElement: Codable, Equatable {
         case timeToOrder = "DataHoraPartidaChegada_ToOrderBy"
         case timeToOrder2 = "DataHoraPartidaChegada_ToOrderByi"
         case destinyStationId = "EstacaoDestino"
-        case origineStationId = "EstacaoOrigem"
+        case originStationId = "EstacaoOrigem"
         case trainId = "NComboio1"
         case trainId2 = "NComboio2"
         case destinyStationName = "NomeEstacaoDestino"
-        case origineStationName = "NomeEstacaoOrigem"
+        case originStationName = "NomeEstacaoOrigem"
         case observations = "Observacoes"
         case company = "Operador"
         case serviceType = "TipoServico"

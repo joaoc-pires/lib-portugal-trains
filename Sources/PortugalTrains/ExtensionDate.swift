@@ -17,6 +17,12 @@ extension Date {
         return "\(components.year ?? 2022)-\(components.month ?? 1)-\(components.day ?? 1)%20\(components.hour ?? 1):\(components.minute ?? 0)"
     }
     
+    var ipFormatedDay: String {
+        
+        let components = Calendar.current.dateComponents([.year, .month, .day], from: self)
+        return "\(components.year ?? 2022)-\(components.month ?? 1)-\(components.day ?? 1)"
+    }
+    
     static var endOfDay: Date {
         
         let formatter = DateFormatter()
