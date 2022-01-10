@@ -99,7 +99,7 @@ This object has the following properties:
 - [x] Implement getTimeTable asynchronously;
 - [ ] Implement TimeTableElement.serviceType as an Enum;
 - [ ] Implement TimeTableElement.observations as an Enum;
-- [ ] Add search by train id;
+- [x] Add search by train id;
 
 ## License
 PortugalTrains is available under the MIT license. See the LICENSE file for more info.
