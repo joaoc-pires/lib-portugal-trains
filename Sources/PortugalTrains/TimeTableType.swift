@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TimeTableType: Int, Codable {
+public enum TimeTableType: Int, Codable {
     case departures = 1
     case arrivals = 2
 }

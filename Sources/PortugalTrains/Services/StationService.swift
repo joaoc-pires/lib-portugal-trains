@@ -37,15 +37,15 @@ public struct StationService: NetworkService {
     
     
     public struct StationReply: Codable {
-        let response: [TimeTable]?
+        public let response: [TimeTable]?
     }
     
     
-    public struct TimeTable: Codable {
-        let nodeId: Int?
-        let stationName: String?
-        let tableType: TimeTableType?
-        let elements: [TimeTableElement]?
+    public struct TimeTable: Codable, Equatable {
+        public let nodeId: Int?
+        public let stationName: String?
+        public let tableType: TimeTableType?
+        public let elements: [TimeTableElement]?
         
         enum CodingKeys: String, CodingKey {
             case stationName = "NomeEstacao"
@@ -55,20 +55,20 @@ public struct StationService: NetworkService {
         }
     }
     
-    public struct TimeTableElement: Codable {
-        let hasPassed: Bool?
-        let time: String?
-        let timeToOrder: String?
-        let timeToOrder2: String?
-        let destinyStationId: Int?
-        let origineStationId: Int?
-        let trainId: Int?
-        let trainId2: Int?
-        let destinyStationName: String?
-        let origineStationName: String?
-        let observations: String?
-        let company: String?
-        let serviceType: String?
+    public struct TimeTableElement: Codable, Equatable {
+        public let hasPassed: Bool?
+        public let time: String?
+        public let timeToOrder: String?
+        public let timeToOrder2: String?
+        public let destinyStationId: Int?
+        public let origineStationId: Int?
+        public let trainId: Int?
+        public let trainId2: Int?
+        public let destinyStationName: String?
+        public let origineStationName: String?
+        public let observations: String?
+        public let company: String?
+        public let serviceType: String?
 
         enum CodingKeys: String, CodingKey {
             case hasPassed = "ComboioPassou"
