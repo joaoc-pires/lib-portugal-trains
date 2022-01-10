@@ -16,77 +16,10 @@ public struct StationService: NetworkService {
         public let response: [Node]?
     }
     
-    
-    public struct Node: Codable, Hashable {
-        public let distance: Int?
-        public let id: Int?
-        public let name: String?
-        
-        enum CodingKeys: String, CodingKey {
-            case distance = "Distancia"
-            case id = "NodeID"
-            case name = "Nome"
-        }
-        
-        public func hash(into hasher: inout Hasher) {
-            hasher.combine(id)
-            hasher.combine(distance)
-            hasher.combine(name)
-        }
-    }
-    
-    
     public struct StationReply: Codable {
-        public let response: [TimeTable]?
+        public let response: [StationTimeTable]?
     }
-    
-    
-    public struct TimeTable: Codable, Equatable {
-        public let nodeId: Int?
-        public let stationName: String?
-        public let tableType: TimeTableType?
-        public let elements: [TimeTableElement]?
         
-        enum CodingKeys: String, CodingKey {
-            case stationName = "NomeEstacao"
-            case nodeId = "NodeID"
-            case tableType = "TipoPedido"
-            case elements = "NodesComboioTabelsPartidasChegadas"
-        }
-    }
-    
-    public struct TimeTableElement: Codable, Equatable {
-        public let hasPassed: Bool?
-        public let time: String?
-        public let timeToOrder: String?
-        public let timeToOrder2: String?
-        public let destinyStationId: Int?
-        public let origineStationId: Int?
-        public let trainId: Int?
-        public let trainId2: Int?
-        public let destinyStationName: String?
-        public let origineStationName: String?
-        public let observations: String?
-        public let company: String?
-        public let serviceType: String?
-
-        enum CodingKeys: String, CodingKey {
-            case hasPassed = "ComboioPassou"
-            case time = "DataHoraPartidaChegada"
-            case timeToOrder = "DataHoraPartidaChegada_ToOrderBy"
-            case timeToOrder2 = "DataHoraPartidaChegada_ToOrderByi"
-            case destinyStationId = "EstacaoDestino"
-            case origineStationId = "EstacaoOrigem"
-            case trainId = "NComboio1"
-            case trainId2 = "NComboio2"
-            case destinyStationName = "NomeEstacaoDestino"
-            case origineStationName = "NomeEstacaoOrigem"
-            case observations = "Observacoes"
-            case company = "Operador"
-            case serviceType = "TipoServico"
-        }
-    }
-    
     public init() { }
     
     
