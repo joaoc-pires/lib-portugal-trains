@@ -11,7 +11,7 @@ public struct StationService: NetworkService {
     
     private let stationSearch = "https://servicos.infraestruturasdeportugal.pt/negocios-e-servicos/estacao-nome/"
     private let stationDetails = "https://servicos.infraestruturasdeportugal.pt/negocios-e-servicos/partidas-chegadas/"
-    
+    private let serviceType = "INTERNACIONAL,%20ALFA,%20IC,%20IR,%20REGIONAL,%20URB%7CSUBUR,%20ESPECIAL,%20MERCADORIAS,%20SERVI%C3%87O"
     public struct StationQueryReply: Codable {
         public let response: [Node]?
     }
@@ -93,7 +93,7 @@ public struct StationService: NetworkService {
     public func getTimeTable(forStationId stationId: Int, startTime: Date = Date(), endTime: Date? = nil, completion: @escaping( Result<StationReply, NetworkError>) -> ()) {
         
         let endTime = endTime ?? Date.endOfDay
-        let url = "\(stationDetails)\(stationId)/\(startTime.ipFormated)/\(endTime.ipFormated)"
+        let url = "\(stationDetails)\(stationId)/\(startTime.ipFormated)/\(endTime.ipFormated)/\(serviceType)"
         getRequest(from: url) { result in
             
             switch result {
